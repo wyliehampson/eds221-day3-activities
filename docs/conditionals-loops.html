@@ -171,7 +171,27 @@ pre code {
 </div>
 
 
+<div id="task-1" class="section level2">
+<h2>Task 1</h2>
+<pre class="r"><code>pm2_5 &lt;- 125
 
+if (pm2_5 &lt; 100) {
+  print(&quot;Low to moderate risk&quot;)
+} else if (pm2_5 &gt;= 100 &amp; pm2_5 &lt; 150) {
+  print(&quot;Unhealthy for sensitive groups&quot;)
+} else {
+  print(&quot;Health risk present&quot;)
+}</code></pre>
+<pre><code>## [1] &quot;Unhealthy for sensitive groups&quot;</code></pre>
+</div>
+<div id="task-2" class="section level2">
+<h2>Task 2</h2>
+<pre class="r"><code>species &lt;- &quot;blue whale&quot;
+
+if (&quot;whale&quot; %in% species) {
+  print(&quot;You found a whale!&quot;)
+}</code></pre>
+</div>
 
 
 
