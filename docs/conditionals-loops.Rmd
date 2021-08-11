@@ -7,6 +7,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
 ```
 
 ## Task 1
@@ -28,8 +29,64 @@ if (pm2_5 < 100) {
 ```{r}
 species <- "blue whale"
 
-if ("whale" %in% species) {
+if (str_detect(species, pattern = "whale")) {
   print("You found a whale!")
 }
 ```
+
+## Task 3
+
+```{r}
+max_airtemp_c <- -50
+
+if (max_airtemp_c > 27) {
+  print("Temperature too high")
+} else {
+  print("Temperature OK")
+}
+```
+
+## Task 4
+
+```{r}
+base_burrito <- 6.50
+main_ingredient <- "chicken"
+
+if (main_ingredient == "veggie") {
+  price <- base_burrito
+  print(price)
+} else if (main_ingredient == "chicken") {
+  price <- base_burrito + 3.00
+  print(price)
+} else if (main_ingredient == "steak") {
+  price <- base_burrito + 3.25
+  print(price)
+} else {
+  print("We don't have that kind of burrito")
+}
+
+```
+
+## Task 5
+
+```{r}
+fish <- c(8, 10, 12, 23)
+fish_percent <- vector(mode = "numeric", length = length(fish))
+
+for (i in seq_along(fish)) {
+  fish_prop <- fish[i] / sum(fish)
+  fish_percent[i] <- fish_prop
+}
+
+fish_percent
+```
+
+## Task 6
+
+```{r}
+for (i in seq_along(month.name)) {
+  print(paste(month.name[i], "is month", i))
+}
+```
+
 

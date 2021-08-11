@@ -1,0 +1,61 @@
+---
+title: "Toolik Chem"
+author: "Wylie Hampson"
+date: "8/11/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(here)
+library(janitor)
+```
+
+## Read in csv and create a dataframe with clean column names
+
+```{r}
+toolik_biochem <- read_csv(here::here("data", "2011_Kling_Akchem.csv"), na = ".") %>%
+  janitor::clean_names()
+```
+
+Create a subset from only the Toolik Inlet site that only contain the pH (p_h), dissolved organic carbon (doc_u_m), and total dissolved nitrogen (tdn_u_m) columns
+
+```{r}
+inlet_biochem <- toolik_biochem %>% 
+  filter(site == "Toolik Inlet") %>% 
+  select(p_h, doc_u_m, tdn_u_m)
+```
+
+Find the mean of the above columns three different ways
+
+```{r}
+# Method 1: Use a for loop
+mean_biochem <- vector(mode = "numeric", length = ncol(inlet_biochem))
+
+for (i in 1:ncol(inlet_biochem)) {
+  mean_val <- mean(inlet_biochem[[i]], na.rm = TRUE)
+  mean_biochem[i] <- mean_val
+}
+
+mean_biochem
+```
+
+```{r}
+# Method 2: Use the apply() funtion
+apply(X = inlet_biochem, 2, mean, na.rm = TRUE)
+```
+```{r}
+# Method 3: Use the purrr::map_df() funtion
+map_df(.x = inlet_biochem, .f = mean, na.rm = TRUE)
+```
+
+
+
+
+
+
+
+
+
+
