@@ -1,0 +1,35 @@
+---
+title: "Conditionals Loops"
+author: "Wylie Hampson"
+date: "8/11/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Task 1
+
+```{r}
+pm2_5 <- 125
+
+if (pm2_5 < 100) {
+  print("Low to moderate risk")
+} else if (pm2_5 >= 100 & pm2_5 < 150) {
+  print("Unhealthy for sensitive groups")
+} else {
+  print("Health risk present")
+}
+```
+
+## Task 2
+
+```{r}
+species <- "blue whale"
+
+if ("whale" %in% species) {
+  print("You found a whale!")
+}
+```
+
